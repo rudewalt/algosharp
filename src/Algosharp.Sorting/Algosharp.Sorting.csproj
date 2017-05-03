@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComparisonSorts\BubbleSort.cs" />
+    <Compile Include="ComparisonSorts\QuickSort.cs" />
     <Compile Include="ComparisonSorts\SelectionSort.cs" />
     <Compile Include="ComparisonSorts\InsertionSort.cs" />
     <Compile Include="ComparisonSorts\MergeSort.cs" />

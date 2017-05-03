@@ -59,5 +59,14 @@ namespace Algosharp.Sorting.Tests
 
             AssertHelper.IsSorted(input);
         }
+
+        [Theory]
+        [MemberData(nameof(SortData))]
+        public void TestQuickSort(int[] input)
+        {
+            QuickSort.Perform(input);
+
+            AssertHelper.IsSorted(input);
+        }
     }
 }
