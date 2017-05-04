@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Algosharp.Common.Extensions;
 
 namespace Algosharp.DataStructures.Heaps
 {
@@ -155,7 +156,7 @@ namespace Algosharp.DataStructures.Heaps
 				var parentPosition = GetParentIndex(i);
 				if (_comparer.Compare(_items[parentPosition], _items[i]) > 0)
 				{
-					Swap(i, parentPosition);
+					_items.Swap(i, parentPosition);
 				}
 			}
 		}
@@ -193,7 +194,7 @@ namespace Algosharp.DataStructures.Heaps
 					break;
 				}
 
-				Swap(index, parentIndex);
+				_items.Swap(index, parentIndex);
 				index = parentIndex;
 			}
 		}
@@ -222,16 +223,9 @@ namespace Algosharp.DataStructures.Heaps
 					break;
 				}
 
-				Swap(index, smallest);
+				_items.Swap(index, smallest);
 				index = smallest;
 			}
-		}
-
-		private void Swap(int firstIndex, int secondIndex)
-		{
-			var tmp = _items[firstIndex];
-			_items[firstIndex] = _items[secondIndex];
-			_items[secondIndex] = tmp;
 		}
 
 		public IEnumerator<T> GetEnumerator()

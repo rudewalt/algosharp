@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Algosharp.Common.Extensions;
 
 namespace Algosharp.Sorting.ComparisonSorts
 {
@@ -16,13 +17,13 @@ namespace Algosharp.Sorting.ComparisonSorts
 	/// 
 	/// <see href="https://en.wikipedia.org/wiki/Bubble_sort"/>
 	/// </summary>
-	public class BubbleSort
+	public static class BubbleSort
 	{
-		public static void Perform<T>(T[] array, Comparer<T> comparer = null)
+		public static void Perform<T>(IList<T> array, Comparer<T> comparer = null)
 		{
 			var equalityComparer = comparer ?? Comparer<T>.Default;
 
-			var n = array.Length - 1;
+			var n = array.Count - 1;
 			int lastSwap;
 			do
 			{
@@ -34,9 +35,7 @@ namespace Algosharp.Sorting.ComparisonSorts
 						continue;
 					}
 
-					var temp = array[j];
-					array[j] = array[j + 1];
-					array[j + 1] = temp;
+					array.Swap(j, j + 1);
 
 					lastSwap = j;
 				}

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Algosharp.Common.Extensions;
 
 namespace Algosharp.Sorting.ComparisonSorts
 {
@@ -18,14 +19,14 @@ namespace Algosharp.Sorting.ComparisonSorts
 	/// </summary>
 	public static class SelectionSort
 	{
-		public static void Perform<T>(T[] array, Comparer<T> comparer = null)
+		public static void Perform<T>(IList<T> array, Comparer<T> comparer = null)
 		{
 			var equalityComparer = comparer ?? Comparer<T>.Default;
 
-			for (var i = 0; i < array.Length - 1; i++)
+			for (var i = 0; i < array.Count - 1; i++)
 			{
 				var min = i;
-				for (var j = i + 1; j < array.Length; j++)
+				for (var j = i + 1; j < array.Count; j++)
 				{
 					if (equalityComparer.Compare(array[min], array[j]) > 0)
 						min = j;
@@ -36,9 +37,7 @@ namespace Algosharp.Sorting.ComparisonSorts
 					continue;
 				}
 
-				var temp = array[i];
-				array[i] = array[min];
-				array[min] = temp;
+				array.Swap(i, min);
 			}
 		}
 	}

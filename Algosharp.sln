@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algosharp.DataStructures", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algosharp.DataStructures.Tests", "tests\Algosharp.DataStructures.Tests\Algosharp.DataStructures.Tests.csproj", "{80976CF0-EB03-408F-B791-3FD73A68BB12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algosharp.Common", "src\Algosharp.Common\Algosharp.Common.csproj", "{8FA8E3D9-7456-4BB7-8564-FE51E615087D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{80976CF0-EB03-408F-B791-3FD73A68BB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80976CF0-EB03-408F-B791-3FD73A68BB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80976CF0-EB03-408F-B791-3FD73A68BB12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FA8E3D9-7456-4BB7-8564-FE51E615087D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FA8E3D9-7456-4BB7-8564-FE51E615087D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FA8E3D9-7456-4BB7-8564-FE51E615087D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FA8E3D9-7456-4BB7-8564-FE51E615087D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

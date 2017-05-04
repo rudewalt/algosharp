@@ -26,12 +26,12 @@ namespace Algosharp.Sorting.ComparisonSorts
 		/// 
 		/// <see cref="MergeSort"/>
 		/// </summary>
-		public static void PerformNatural<T>(T[] array, Comparer<T> comparer = null)
+		public static void PerformNatural<T>(IList<T> array, Comparer<T> comparer = null)
 		{
 			var equalityComparer = comparer ?? Comparer<T>.Default;
-			var temp = new T[array.Length];
+			var temp = new T[array.Count];
 
-			var end = array.Length - 1;
+			var end = array.Count - 1;
 			bool sorted;
 
 			do
@@ -72,10 +72,10 @@ namespace Algosharp.Sorting.ComparisonSorts
 		/// 
 		/// <see cref="MergeSort"/>
 		/// </summary>
-		public static void PerformParallel<T>(T[] array, Comparer<T> comparer = null)
+		public static void PerformParallel<T>(IList<T> array, Comparer<T> comparer = null)
 		{
 			var equalityComparer = comparer ?? Comparer<T>.Default;
-			SplitParallel(array, 0, array.Length - 1, equalityComparer, new T[array.Length]);
+			SplitParallel(array, 0, array.Count - 1, equalityComparer, new T[array.Count]);
 		}
 
 		/// <summary>
@@ -85,10 +85,10 @@ namespace Algosharp.Sorting.ComparisonSorts
 		/// 
 		/// <see cref="MergeSort"/>
 		/// </summary>
-		public static void PerformTopDown<T>(T[] array, Comparer<T> comparer = null)
+		public static void PerformTopDown<T>(IList<T> array, Comparer<T> comparer = null)
 		{
 			var equalityComparer = comparer ?? Comparer<T>.Default;
-			Split(array, 0, array.Length - 1, equalityComparer, new T[array.Length]);
+			Split(array, 0, array.Count - 1, equalityComparer, new T[array.Count]);
 		}
 
 		private static void Split<T>(IList<T> array, int begin, int end, IComparer<T> comparer, IList<T> temp)

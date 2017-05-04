@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Algosharp.Common.Extensions;
+using Algosharp.Common.Helpers;
 
 namespace Algosharp.Sorting.ComparisonSorts
 {
@@ -19,16 +20,14 @@ namespace Algosharp.Sorting.ComparisonSorts
 	/// </summary>
 	public static class QuickSort
 	{
-		private static readonly Random Random = new Random();
-
-		public static void Perform<T>(T[] array, Comparer<T> comparer = null)
+		public static void Perform<T>(IList<T> array, Comparer<T> comparer = null)
 		{
 			var equalityComparer = comparer ?? Comparer<T>.Default;
 
-			Sort(array, equalityComparer, 0, array.Length - 1);
+			Sort(array, equalityComparer, 0, array.Count - 1);
 		}
 
-		private static void Sort<T>(T[] array, Comparer<T> comparer, int begin, int end)
+		private static void Sort<T>(IList<T> array, IComparer<T> comparer, int begin, int end)
 		{
 			if (begin >= end)
 			{
@@ -41,32 +40,25 @@ namespace Algosharp.Sorting.ComparisonSorts
 			Sort(array, comparer, partitionIndex + 1, end);
 		}
 
-		private static int Partition<T>(T[] array, Comparer<T> comparer, int begin, int end)
+		private static int Partition<T>(IList<T> array, IComparer<T> comparer, int begin, int end)
 		{
-			var pivotIndex = Random.Next(begin, end + 1);
+			var pivotIndex = ThreadSafeRandom.Next(begin, end + 1);
 			var pivot = array[pivotIndex];
 
-			Swap(ref array[pivotIndex], ref array[end]);
+			array.Swap(pivotIndex, end);
 
 			var index = begin;
 			for (var j = begin; j < end; j++)
 			{
 				if (comparer.Compare(array[j], pivot) <= 0)
 				{
-					Swap(ref array[index], ref array[j]);
+					array.Swap(index, j);
 					index++;
 				}
 			}
 
-			Swap(ref array[index], ref array[end]);
+			array.Swap(index, end);
 			return index;
-		}
-
-		private static void Swap<T>(ref T objectFirst, ref T objectSecond)
-		{
-			var temp = objectFirst;
-			objectFirst = objectSecond;
-			objectSecond = temp;
 		}
 	}
 }
